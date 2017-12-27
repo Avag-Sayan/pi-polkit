@@ -35,8 +35,9 @@ static GOptionEntry option_entries[] =
     { NULL }
 };
 
-void show_msg(GtkWindow* parent, GtkMessageType type, const char* msg)
-{
+void show_msg(GtkWindow* parent, GtkMessageType type, const char* msg) {
+    g_object_set (gtk_settings_get_default (), "gtk-dialogs-use-header", TRUE, "gtk-application-prefer-dark-theme", TRUE, NULL);
+    
     GtkWidget* dlg = gtk_message_dialog_new(parent, GTK_DIALOG_MODAL, type, GTK_BUTTONS_OK, msg);
     const char* title = NULL;
     switch(type)
